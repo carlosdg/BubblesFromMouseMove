@@ -54,14 +54,16 @@ var Bubble = (function () {
         // Random angle in range [0, 2*PI)
         var angle = Math.random() * 2 * Math.PI;
         // Now we translate from polar coordinates to cartisean coordinates
-        // And we get a random offset in any direction of the space 
+        // And we get a random offset in any direction of the space
         this.x_ += Math.cos(angle) * lengthFactor;
         this.y_ += Math.sin(angle) * lengthFactor;
     };
     return Bubble;
 }());
 function main() {
-    var canvas = new Canvas(innerWidth, innerHeight), bubbles = [], maxNumBubbles = 50, bubblesRadius = 10;
+    // The canvas will take the whole screen. And just in case it takes too much,
+    // in the stylesheet the overflow of the body is set to hidden
+    var canvas = new Canvas(innerWidth, innerHeight), bubbles = [], maxNumBubbles = 60, bubblesRadius = 10;
     var run = function () {
         canvas.clear();
         for (var _i = 0, bubbles_1 = bubbles; _i < bubbles_1.length; _i++) {
@@ -85,6 +87,7 @@ function main() {
             bubbles.splice(0, 1);
         }
     });
+    // If the user resizes the window we need to resize the canvas, else it would be ugly
     window.addEventListener("resize", function (e) {
         canvas.resize(innerWidth, innerHeight);
         bubbles = [];

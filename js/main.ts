@@ -65,7 +65,7 @@ class Bubble {
         let angle = Math.random() * 2*Math.PI;
 
         // Now we translate from polar coordinates to cartisean coordinates
-        // And we get a random offset in any direction of the space 
+        // And we get a random offset in any direction of the space
         this.x_ += Math.cos(angle) * lengthFactor;
         this.y_ += Math.sin(angle) * lengthFactor;
     }
@@ -75,9 +75,11 @@ class Bubble {
 
 function main(){
 
+    // The canvas will take the whole screen. And just in case it takes too much,
+    // in the stylesheet the overflow of the body is set to hidden
     let canvas: Canvas = new Canvas( innerWidth, innerHeight ),
         bubbles: Bubble[] = [],
-        maxNumBubbles: number = 50,
+        maxNumBubbles: number = 60,
         bubblesRadius: number = 10;
     let run = function(){
         canvas.clear();
@@ -105,6 +107,8 @@ function main(){
             bubbles.splice(0, 1);
         }
     });
+
+    // If the user resizes the window we need to resize the canvas, else it would be ugly
     window.addEventListener("resize", (e)=>{
         canvas.resize( innerWidth, innerHeight );
         bubbles = [];
