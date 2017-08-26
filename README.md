@@ -1,4 +1,4 @@
-# TS_BubblesTrailingMouse
+# TS_BubblesFromMouse
 <h2> Brief description: </h2>
 <p>
     This is a simple script to get familiar with TypeScript. When you move your mouse over
